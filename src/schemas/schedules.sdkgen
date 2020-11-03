@@ -1,0 +1,26 @@
+type Schedule {
+	day: string
+	intervals: {
+		start: string
+		end: string
+	}[]
+}
+
+type SelectInterval {
+	from: string
+	to: string
+}
+
+@description Create a new time
+@arg schedule teste
+@rest POST /create [body {schedule}]
+fn createTime(schedule: Schedule): Schedule
+
+@rest DELETE /delete [body {schedule}]
+fn deleteTime(schedule: Schedule): Schedule
+
+@rest GET /list
+fn listTime(): Schedule[]
+
+@rest GET /listIn [body {interval}]
+fn listTimeInterval(interval: SelectInterval): Schedule[]
